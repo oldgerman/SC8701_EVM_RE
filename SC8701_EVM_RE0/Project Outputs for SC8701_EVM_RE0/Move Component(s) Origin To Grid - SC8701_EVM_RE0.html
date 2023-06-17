@@ -1,0 +1,527 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 { 
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body { 
+			font-family : segoe ui;
+		}
+
+		td, th {  
+			padding: 0.5em;
+			text-align : left;
+		}
+		th { 
+			background-color : #EEEEEE;
+		
+		}
+		th.column1, td.column1 { 
+			width : 50%; 
+		}
+
+        th.column2, td.column2 {
+            width : 25%;
+        }
+
+		table { 
+			width : 100%; 
+            font-size: 0.9em;
+		}
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 5em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error { 
+			color : red;
+			font-weight : bold;
+		}	
+		tr.onmouseout_odd { 
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+			
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);		
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {	
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}	
+	</script><title>Move Component(s) Origin to Grid</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://E:\Altium\Altium23_shared\Templates\AD_logo.png
+		"><a href="dxpprocess://Client:SetupPreferences?Server=PCB|PageName=Reports" class="customize"><acronym title="dxpprocess://Client:SetupPreferences?Server=PCB|PageName=Reports">customize</acronym></a><h1>Move Component(s) Origin to Grid</h1>
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">2023/6/17</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">14:19:33</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:00</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc" class="file"><acronym title="D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc">D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc</acronym></a></td>
+</tr>
+</table><a name="IDATCERZSV3XIMPZPBOVHPBUB5YHWU4O12A0HXDDNM2HO4ZB0P51EI"><h2>Components Origin</h2></a><a name="IDG0FSEHK51BUDEMGAYSEDYPJU0CTF10XFGV234YIEHTTBVC2UX03O"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="warning"></th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3924.685mil|Location2.X=3932.559mil|Location1.Y=2483.228mil|Location2.Y=2514.724mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3924.685mil|Location2.X=3932.559mil|Location1.Y=2483.228mil|Location2.Y=2514.724mil|Absolute=True">SMT Small Component SB1-NetTie_200um (-6.004mm,-15.901mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2891.899mil|Location2.X=3097.499mil|Location1.Y=2342.5mil|Location2.Y=2397.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2891.899mil|Location2.X=3097.499mil|Location1.Y=2342.5mil|Location2.Y=2397.5mil|Absolute=True">SMT Small Component R32-24K (-28.575mm,-19.177mm) on Bottom Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3127.5mil|Location2.X=3182.5mil|Location1.Y=2402.5mil|Location2.Y=2602.95mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3127.5mil|Location2.X=3182.5mil|Location1.Y=2402.5mil|Location2.Y=2602.95mil|Absolute=True">SMT Small Component R31-100K (-25.654mm,-16.891mm) on Bottom Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3187.5mil|Location2.X=3393.205mil|Location1.Y=2402.5mil|Location2.Y=2457.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3187.5mil|Location2.X=3393.205mil|Location1.Y=2402.5mil|Location2.Y=2457.5mil|Absolute=True">SMT Small Component R24-100K (-23.368mm,-17.653mm) on Bottom Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2896.709mil|Location2.X=3097.5mil|Location1.Y=2282.5mil|Location2.Y=2337.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2896.709mil|Location2.X=3097.5mil|Location1.Y=2282.5mil|Location2.Y=2337.5mil|Absolute=True">SMT Small Component R18-10K (-28.575mm,-20.701mm) on Bottom Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3187.5mil|Location2.X=3393.257mil|Location1.Y=2462.5mil|Location2.Y=2517.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3187.5mil|Location2.X=3393.257mil|Location1.Y=2462.5mil|Location2.Y=2517.5mil|Absolute=True">SMT Small Component R17-200K (-23.368mm,-16.129mm) on Bottom Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2907.014mil|Location2.X=3121.693mil|Location1.Y=2401.024mil|Location2.Y=2528.976mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2907.014mil|Location2.X=3121.693mil|Location1.Y=2401.024mil|Location2.Y=2528.976mil|Absolute=True">SMT Small Component Q5-2N7002 (-28.575mm,-16.764mm) on Bottom Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3127.5mil|Location2.X=3338.847mil|Location1.Y=2342.5mil|Location2.Y=2397.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3127.5mil|Location2.X=3338.847mil|Location1.Y=2342.5mil|Location2.Y=2397.5mil|Absolute=True">SMT Small Component C20-1uF/50V (-24.892mm,-19.177mm) on Bottom Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2982.5mil|Location2.X=3055.5mil|Location1.Y=4077.5mil|Location2.Y=4215.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2982.5mil|Location2.X=3055.5mil|Location1.Y=4077.5mil|Location2.Y=4215.5mil|Absolute=True">SMT Small Component Logo4-OldGerman Symbol (182.626mm,184.15mm) on Bottom Layer</acronym></a> - Origin changed from [182.626mm:184.15mm] to [288.417mm:263.525mm]</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2990mil|Location2.X=3063mil|Location1.Y=4075mil|Location2.Y=4213mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2990mil|Location2.X=3063mil|Location1.Y=4075mil|Location2.Y=4213mil|Absolute=True">SMT Small Component Logo3-OldGerman Symbol (182.499mm,184.15mm) on Top Layer</acronym></a> - Origin changed from [182.499mm:184.15mm] to [288.29mm:263.525mm]</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3099mil|Location2.X=3629mil|Location1.Y=3841.479mil|Location2.Y=4094.329mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3099mil|Location2.X=3629mil|Location1.Y=3841.479mil|Location2.Y=4094.329mil|Absolute=True">SMT Small Component LOGO2-CAUTION HOT SURFACE (195.072mm,180.848mm) on Top Layer</acronym></a> - Origin changed from [195.072mm:180.848mm] to [300.863mm:260.223mm]</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4701mil|Location2.X=5230.695mil|Location1.Y=3841.479mil|Location2.Y=4094.329mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4701mil|Location2.X=5230.695mil|Location1.Y=3841.479mil|Location2.Y=4094.329mil|Absolute=True">SMT Small Component LOGO1-CAUTION HOT SURFACE (228.092mm,180.848mm) on Top Layer</acronym></a> - Origin changed from [228.092mm:180.848mm] to [333.883mm:260.223mm]</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5405.52mil|Location2.X=5724.48mil|Location1.Y=3915.52mil|Location2.Y=4234.48mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5405.52mil|Location2.X=5724.48mil|Location1.Y=3915.52mil|Location2.Y=4234.48mil|Absolute=True">Small Component H4-HOLE (35.56mm,24.13mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2605.52mil|Location2.X=2924.48mil|Location1.Y=3915.52mil|Location2.Y=4234.48mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2605.52mil|Location2.X=2924.48mil|Location1.Y=3915.52mil|Location2.Y=4234.48mil|Absolute=True">Small Component H3-HOLE (-35.56mm,24.13mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5405.52mil|Location2.X=5724.48mil|Location1.Y=2015.52mil|Location2.Y=2334.48mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5405.52mil|Location2.X=5724.48mil|Location1.Y=2015.52mil|Location2.Y=2334.48mil|Absolute=True">Small Component H2-HOLE (35.56mm,-24.13mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2605.52mil|Location2.X=2924.48mil|Location1.Y=2015.52mil|Location2.Y=2334.48mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2605.52mil|Location2.X=2924.48mil|Location1.Y=2015.52mil|Location2.Y=2334.48mil|Absolute=True">Small Component H1-HOLE (-35.56mm,-24.13mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3770mil|Location2.X=4005.394mil|Location1.Y=2459.606mil|Location2.Y=2707.132mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3770mil|Location2.X=4005.394mil|Location1.Y=2459.606mil|Location2.Y=2707.132mil|Absolute=True">LCC Component U1-SC8701 (A) (-6.604mm,-14.351mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5251.417mil|Location2.X=5678.583mil|Location1.Y=2966.299mil|Location2.Y=3503.701mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5251.417mil|Location2.X=5678.583mil|Location1.Y=2966.299mil|Location2.Y=3503.701mil|Absolute=True">SMT Small Component C31-100uF/50V (33.02mm,2.794mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2621.417mil|Location2.X=3048.583mil|Location1.Y=2966.299mil|Location2.Y=3503.701mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2621.417mil|Location2.X=3048.583mil|Location1.Y=2966.299mil|Location2.Y=3503.701mil|Absolute=True">SMT Small Component C32-100uF/50V (-33.782mm,2.794mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5097.868mil|Location2.X=5252.5mil|Location1.Y=2187.5mil|Location2.Y=2302.499mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5097.868mil|Location2.X=5252.5mil|Location1.Y=2187.5mil|Location2.Y=2302.499mil|Absolute=True">SMT Small Component R33-20k (26.924mm,-22.352mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4697.868mil|Location2.X=4852.5mil|Location1.Y=2187.5mil|Location2.Y=2302.499mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4697.868mil|Location2.X=4852.5mil|Location1.Y=2187.5mil|Location2.Y=2302.499mil|Absolute=True">SMT Small Component R30-20k (16.764mm,-22.352mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3464.868mil|Location2.X=3572.5mil|Location1.Y=2557.501mil|Location2.Y=2672.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3464.868mil|Location2.X=3572.5mil|Location1.Y=2557.501mil|Location2.Y=2672.5mil|Absolute=True">SMT Small Component R29-100K (-15.748mm,-12.954mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2687.5mil|Location2.X=2742.5mil|Location1.Y=2397.501mil|Location2.Y=2608.583mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2687.5mil|Location2.X=2742.5mil|Location1.Y=2397.501mil|Location2.Y=2608.583mil|Absolute=True">SMT Small Component R28-150K (-36.83mm,-17.018mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2627.5mil|Location2.X=2682.5mil|Location1.Y=2397.5mil|Location2.Y=2608.514mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2627.5mil|Location2.X=2682.5mil|Location1.Y=2397.5mil|Location2.Y=2608.514mil|Absolute=True">SMT Small Component R27-100K (-38.354mm,-17.018mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3857.5mil|Location2.X=3972.499mil|Location1.Y=2204.479mil|Location2.Y=2357.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3857.5mil|Location2.X=3972.499mil|Location1.Y=2204.479mil|Location2.Y=2357.5mil|Absolute=True">SMT Small Component R26-15K (-6.35mm,-20.193mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3729.868mil|Location2.X=3837.5mil|Location1.Y=2242.5mil|Location2.Y=2357.499mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3729.868mil|Location2.X=3837.5mil|Location1.Y=2242.5mil|Location2.Y=2357.499mil|Absolute=True">SMT Small Component R25-68K (-9.017mm,-20.955mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3594.868mil|Location2.X=3702.5mil|Location1.Y=2342.5mil|Location2.Y=2457.499mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3594.868mil|Location2.X=3702.5mil|Location1.Y=2342.5mil|Location2.Y=2457.499mil|Absolute=True">SMT Small Component R23-0R (-12.446mm,-18.415mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4027.501mil|Location2.X=4142.5mil|Location1.Y=2169.479mil|Location2.Y=2302.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4027.501mil|Location2.X=4142.5mil|Location1.Y=2169.479mil|Location2.Y=2302.5mil|Absolute=True">SMT Small Component R20-32.4K (-2.032mm,-21.59mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4027.5mil|Location2.X=4142.499mil|Location1.Y=2209.479mil|Location2.Y=2357.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4027.5mil|Location2.X=4142.499mil|Location1.Y=2209.479mil|Location2.Y=2357.5mil|Absolute=True">SMT Small Component R19-100K (-2.032mm,-20.193mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4172.501mil|Location2.X=4417.238mil|Location1.Y=2352.5mil|Location2.Y=2407.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4172.501mil|Location2.X=4417.238mil|Location1.Y=2352.5mil|Location2.Y=2407.5mil|Absolute=True">SMT Small Component R16-1K (1.651mm,-18.923mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4172.501mil|Location2.X=4418.995mil|Location1.Y=2422.5mil|Location2.Y=2477.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4172.501mil|Location2.X=4418.995mil|Location1.Y=2422.5mil|Location2.Y=2477.5mil|Absolute=True">SMT Small Component R15-1K (1.651mm,-17.145mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3582.868mil|Location2.X=3797.5mil|Location1.Y=2775mil|Location2.Y=2867.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3582.868mil|Location2.X=3797.5mil|Location1.Y=2775mil|Location2.Y=2867.5mil|Absolute=True">SMT Small Component R14-1K (-10.795mm,-7.239mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3627.5mil|Location2.X=3781.514mil|Location1.Y=2752.5mil|Location2.Y=2957.132mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3627.5mil|Location2.X=3781.514mil|Location1.Y=2752.5mil|Location2.Y=2957.132mil|Absolute=True">SMT Small Component R13-1K (-12.954mm,-8.001mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4520mil|Location2.X=4623.192mil|Location1.Y=3299.193mil|Location2.Y=3414.192mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4520mil|Location2.X=4623.192mil|Location1.Y=3299.193mil|Location2.Y=3414.192mil|Absolute=True">SMT Small Component R12-0R (10.94mm,5.885mm) on Bottom Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4572.501mil|Location2.X=4775mil|Location1.Y=3227.5mil|Location2.Y=3282.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4572.501mil|Location2.X=4775mil|Location1.Y=3227.5mil|Location2.Y=3282.5mil|Absolute=True">SMT Small Component R11-0R (11.811mm,3.302mm) on Bottom Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4457.501mil|Location2.X=4572.5mil|Location1.Y=3147.5mil|Location2.Y=3247.132mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4457.501mil|Location2.X=4572.5mil|Location1.Y=3147.5mil|Location2.Y=3247.132mil|Absolute=True">SMT Small Component R10-0R (8.89mm,1.27mm) on Bottom Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4587.5mil|Location2.X=4687.132mil|Location1.Y=3082.5mil|Location2.Y=3197.499mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4587.5mil|Location2.X=4687.132mil|Location1.Y=3082.5mil|Location2.Y=3197.499mil|Absolute=True">SMT Small Component R9-0R (11.43mm,0.381mm) on Bottom Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4102.5mil|Location2.X=4157.5mil|Location1.Y=3115mil|Location2.Y=3302.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4102.5mil|Location2.X=4157.5mil|Location1.Y=3115mil|Location2.Y=3302.5mil|Absolute=True">SMT Small Component R8-0R (-0.889mm,3.048mm) on Bottom Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4102.501mil|Location2.X=4217.5mil|Location1.Y=3322.5mil|Location2.Y=3437.028mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4102.501mil|Location2.X=4217.5mil|Location1.Y=3322.5mil|Location2.Y=3437.028mil|Absolute=True">SMT Small Component R7-0R (-0.127mm,5.715mm) on Bottom Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3664.479mil|Location2.X=3832.5mil|Location1.Y=3307.5mil|Location2.Y=3422.499mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3664.479mil|Location2.X=3832.5mil|Location1.Y=3307.5mil|Location2.Y=3422.499mil|Absolute=True">SMT Small Component R6-0R (-9.144mm,6.096mm) on Bottom Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3717.5mil|Location2.X=3832.499mil|Location1.Y=3189.479mil|Location2.Y=3292.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3717.5mil|Location2.X=3832.499mil|Location1.Y=3189.479mil|Location2.Y=3292.5mil|Absolute=True">SMT Small Component R5-0R (-9.906mm,3.556mm) on Bottom Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4172.5mil|Location2.X=4307.5mil|Location1.Y=3572.5mil|Location2.Y=3677.028mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4172.5mil|Location2.X=4307.5mil|Location1.Y=3572.5mil|Location2.Y=3677.028mil|Absolute=True">SMT Small Component R4-NC (1.905mm,12.319mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4022.5mil|Location2.X=4161.634mil|Location1.Y=3572.5mil|Location2.Y=3677.132mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4022.5mil|Location2.X=4161.634mil|Location1.Y=3572.5mil|Location2.Y=3677.132mil|Absolute=True">SMT Small Component R3-NC (-1.905mm,12.319mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4764.5mil|Location2.X=4965.5mil|Location1.Y=3397mil|Location2.Y=3550.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4764.5mil|Location2.X=4965.5mil|Location1.Y=3397mil|Location2.Y=3550.5mil|Absolute=True">SMT Small Component R2-10mR (17.78mm,9.525mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4764.5mil|Location2.X=4965.5mil|Location1.Y=3554.5mil|Location2.Y=3708.132mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4764.5mil|Location2.X=4965.5mil|Location1.Y=3554.5mil|Location2.Y=3708.132mil|Absolute=True">SMT Small Component R2-1-NC (17.78mm,12.192mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3344.5mil|Location2.X=3555.457mil|Location1.Y=3395mil|Location2.Y=3555.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3344.5mil|Location2.X=3555.457mil|Location1.Y=3395mil|Location2.Y=3555.5mil|Absolute=True">SMT Small Component R1-10mR (-18.288mm,9.652mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3344.5mil|Location2.X=3570.223mil|Location1.Y=3554.5mil|Location2.Y=3712.132mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3344.5mil|Location2.X=3570.223mil|Location1.Y=3554.5mil|Location2.Y=3712.132mil|Absolute=True">SMT Small Component R1-1-NC (-18.288mm,12.192mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4357.417mil|Location2.X=4584.725mil|Location1.Y=3479.213mil|Location2.Y=3630.787mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4357.417mil|Location2.X=4584.725mil|Location1.Y=3479.213mil|Location2.Y=3630.787mil|Absolute=True">Component Q4-N-MOS_GDS (8.636mm,10.922mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4406.299mil|Location2.X=4772.583mil|Location1.Y=3439.843mil|Location2.Y=3670.157mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4406.299mil|Location2.X=4772.583mil|Location1.Y=3439.843mil|Location2.Y=3670.157mil|Absolute=True">SMT SIP Component Q4B-N-MOS_GDS (9.779mm,10.922mm) on Bottom Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4264.213mil|Location2.X=4415.787mil|Location1.Y=3082.536mil|Location2.Y=3309.724mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4264.213mil|Location2.X=4415.787mil|Location1.Y=3082.536mil|Location2.Y=3309.724mil|Absolute=True">Component Q3-N-MOS_GDS (4.445mm,2.667mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4219.843mil|Location2.X=4450.158mil|Location1.Y=3087.536mil|Location2.Y=3437.559mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4219.843mil|Location2.X=4450.158mil|Location1.Y=3087.536mil|Location2.Y=3437.559mil|Absolute=True">SMT SIP Component Q3B-N-MOS_GDS (4.318mm,4.064mm) on Bottom Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3904.213mil|Location2.X=4055.787mil|Location1.Y=3082.536mil|Location2.Y=3309.724mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3904.213mil|Location2.X=4055.787mil|Location1.Y=3082.536mil|Location2.Y=3309.724mil|Absolute=True">Component Q2-N-MOS_GDS (-4.699mm,2.667mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3864.843mil|Location2.X=4095.158mil|Location1.Y=3087.536mil|Location2.Y=3437.559mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3864.843mil|Location2.X=4095.158mil|Location1.Y=3087.536mil|Location2.Y=3437.559mil|Absolute=True">SMT SIP Component Q2B-N-MOS_GDS (-4.699mm,4.064mm) on Bottom Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3675.417mil|Location2.X=3902.52mil|Location1.Y=3489.213mil|Location2.Y=3640.787mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3675.417mil|Location2.X=3902.52mil|Location1.Y=3489.213mil|Location2.Y=3640.787mil|Absolute=True">Component Q1-N-MOS_GDS (-9.017mm,11.176mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3627.441mil|Location2.X=3977.583mil|Location1.Y=3449.843mil|Location2.Y=3680.158mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3627.441mil|Location2.X=3977.583mil|Location1.Y=3449.843mil|Location2.Y=3680.158mil|Absolute=True">SMT SIP Component Q1B-N-MOS_GDS (-9.779mm,11.176mm) on Bottom Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5011mil|Location2.X=5319mil|Location1.Y=2021mil|Location2.Y=2172.132mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5011mil|Location2.X=5319mil|Location1.Y=2021mil|Location2.Y=2172.132mil|Absolute=True">Small Component P6-CONN_X3 (22.86mm,-26.67mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4611mil|Location2.X=4919mil|Location1.Y=2021mil|Location2.Y=2172.028mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4611mil|Location2.X=4919mil|Location1.Y=2021mil|Location2.Y=2172.028mil|Absolute=True">Small Component P5-CONN_X3 (17.78mm,-26.67mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5411mil|Location2.X=5619mil|Location1.Y=2371mil|Location2.Y=2531.132mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5411mil|Location2.X=5619mil|Location1.Y=2371mil|Location2.Y=2531.132mil|Absolute=True">Small Component P1-CONN_X2 (33.02mm,-17.78mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2961mil|Location2.X=3269mil|Location1.Y=2021mil|Location2.Y=2181.132mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2961mil|Location2.X=3269mil|Location1.Y=2021mil|Location2.Y=2181.132mil|Absolute=True">Small Component P2-CONN_X3 (-24.13mm,-26.67mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3577.501mil|Location2.X=3692.5mil|Location1.Y=2557.5mil|Location2.Y=2665.132mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3577.501mil|Location2.X=3692.5mil|Location1.Y=2557.5mil|Location2.Y=2665.132mil|Absolute=True">SMT Small Component D9-BLUE-LED (-13.462mm,-13.716mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3785mil|Location2.X=4452.433mil|Location1.Y=3705.032mil|Location2.Y=4214.968mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3785mil|Location2.X=4452.433mil|Location1.Y=3705.032mil|Location2.Y=4214.968mil|Absolute=True">SMT Small Component L1-3.3uH (0mm,21.209mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5281.104mil|Location2.X=5648.602mil|Location1.Y=2528.479mil|Location2.Y=2948.602mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5281.104mil|Location2.X=5648.602mil|Location1.Y=2528.479mil|Location2.Y=2948.602mil|Absolute=True">Small Component J4-U6047 (33.02mm,-9.144mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5281.104mil|Location2.X=5648.602mil|Location1.Y=3458.445mil|Location2.Y=3878.602mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5281.104mil|Location2.X=5648.602mil|Location1.Y=3458.445mil|Location2.Y=3878.602mil|Absolute=True">Small Component J3-U6047 (33.02mm,14.478mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2681.398mil|Location2.X=3048.722mil|Location1.Y=2528.479mil|Location2.Y=2948.602mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2681.398mil|Location2.X=3048.722mil|Location1.Y=2528.479mil|Location2.Y=2948.602mil|Absolute=True">Small Component J2-U6047 (-33.02mm,-9.144mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2681.398mil|Location2.X=3048.858mil|Location1.Y=3458.479mil|Location2.Y=3878.602mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2681.398mil|Location2.X=3048.858mil|Location1.Y=3458.479mil|Location2.Y=3878.602mil|Absolute=True">Small Component J1-U6047 (-33.02mm,14.478mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4180.008mil|Location2.X=4381.703mil|Location1.Y=2528.441mil|Location2.Y=2591.559mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4180.008mil|Location2.X=4381.703mil|Location1.Y=2528.441mil|Location2.Y=2591.559mil|Absolute=True">SMT Small Component D6-1N4148 (2.032mm,-14.351mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4075.008mil|Location2.X=4204.992mil|Location1.Y=2788.441mil|Location2.Y=2904.028mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4075.008mil|Location2.X=4204.992mil|Location1.Y=2788.441mil|Location2.Y=2904.028mil|Absolute=True">SMT Small Component D5-1N4148 (-0.635mm,-7.747mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4634.133mil|Location2.X=4742.028mil|Location1.Y=3291.701mil|Location2.Y=3421.685mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4634.133mil|Location2.X=4742.028mil|Location1.Y=3291.701mil|Location2.Y=3421.685mil|Absolute=True">SMT Small Component D4-1N4148 (12.718mm,5.885mm) on Bottom Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4450.008mil|Location2.X=4579.992mil|Location1.Y=3039.445mil|Location2.Y=3146.559mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4450.008mil|Location2.X=4579.992mil|Location1.Y=3039.445mil|Location2.Y=3146.559mil|Absolute=True">SMT Small Component D3-1N4148 (8.89mm,-0.254mm) on Bottom Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4158.441mil|Location2.X=4221.559mil|Location1.Y=3110mil|Location2.Y=3309.992mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4158.441mil|Location2.X=4221.559mil|Location1.Y=3110mil|Location2.Y=3309.992mil|Absolute=True">SMT Small Component D2-1N4148 (0.635mm,3.048mm) on Bottom Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3620mil|Location2.X=3776.559mil|Location1.Y=3300.008mil|Location2.Y=3429.992mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3620mil|Location2.X=3776.559mil|Location1.Y=3300.008mil|Location2.Y=3429.992mil|Absolute=True">SMT Small Component D1-1N4148 (-10.668mm,6.096mm) on Bottom Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4902.5mil|Location2.X=4957.5mil|Location1.Y=3080mil|Location2.Y=3292.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4902.5mil|Location2.X=4957.5mil|Location1.Y=3080mil|Location2.Y=3292.5mil|Absolute=True">SMT Small Component C24-100nF/50V (19.431mm,2.794mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4697.5mil|Location2.X=4752.5mil|Location1.Y=3260mil|Location2.Y=3472.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4697.5mil|Location2.X=4752.5mil|Location1.Y=3260mil|Location2.Y=3472.5mil|Absolute=True">SMT Small Component C23-100nF/50V (14.224mm,7.366mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3572.5mil|Location2.X=3627.5mil|Location1.Y=3260mil|Location2.Y=3472.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3572.5mil|Location2.X=3627.5mil|Location1.Y=3260mil|Location2.Y=3472.5mil|Absolute=True">SMT Small Component C22-100nF/50V (-14.351mm,7.366mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3357.5mil|Location2.X=3412.5mil|Location1.Y=3086mil|Location2.Y=3292.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3357.5mil|Location2.X=3412.5mil|Location1.Y=3086mil|Location2.Y=3292.5mil|Absolute=True">SMT Small Component C21-100nF/50V (-19.812mm,2.794mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4082.5mil|Location2.X=4294.867mil|Location1.Y=2732.5mil|Location2.Y=2787.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4082.5mil|Location2.X=4294.867mil|Location1.Y=2732.5mil|Location2.Y=2787.5mil|Absolute=True">SMT Small Component C19-1uF/16V (-0.635mm,-9.271mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5052.417mil|Location2.X=5192.5mil|Location1.Y=2187.501mil|Location2.Y=2302.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5052.417mil|Location2.X=5192.5mil|Location1.Y=2187.501mil|Location2.Y=2302.5mil|Absolute=True">SMT Small Component C18-10nF/6.3V (25.4mm,-22.352mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4652.417mil|Location2.X=4792.5mil|Location1.Y=2187.501mil|Location2.Y=2302.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4652.417mil|Location2.X=4792.5mil|Location1.Y=2187.501mil|Location2.Y=2302.5mil|Absolute=True">SMT Small Component C17-10nF/6.3V (15.24mm,-22.352mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3857.5mil|Location2.X=3972.499mil|Location1.Y=2164.479mil|Location2.Y=2297.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3857.5mil|Location2.X=3972.499mil|Location1.Y=2164.479mil|Location2.Y=2297.5mil|Absolute=True">SMT Small Component C16-15nF/6.3V (-6.35mm,-21.717mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3972.5mil|Location2.X=4027.5mil|Location1.Y=2160mil|Location2.Y=2357.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3972.5mil|Location2.X=4027.5mil|Location1.Y=2160mil|Location2.Y=2357.5mil|Absolute=True">SMT Small Component C15-NC (-4.191mm,-20.955mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4122.501mil|Location2.X=4335.693mil|Location1.Y=2472.5mil|Location2.Y=2527.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4122.501mil|Location2.X=4335.693mil|Location1.Y=2472.5mil|Location2.Y=2527.5mil|Absolute=True">SMT Small Component C14-1uF/50V (0.381mm,-15.875mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3797.5mil|Location2.X=3852.5mil|Location1.Y=2752.501mil|Location2.Y=2962.797mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3797.5mil|Location2.X=3852.5mil|Location1.Y=2752.501mil|Location2.Y=2962.797mil|Absolute=True">SMT Small Component C13-1uF/50V (-8.636mm,-8.001mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4077.417mil|Location2.X=4172.5mil|Location1.Y=2532.5mil|Location2.Y=2687.485mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4077.417mil|Location2.X=4172.5mil|Location1.Y=2532.5mil|Location2.Y=2687.485mil|Absolute=True">SMT Small Component C12-100nF/16V (-0.508mm,-13.589mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3872.501mil|Location2.X=3987.5mil|Location1.Y=2762.5mil|Location2.Y=2870.583mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3872.501mil|Location2.X=3987.5mil|Location1.Y=2762.5mil|Location2.Y=2870.583mil|Absolute=True">SMT Small Component C11-100nF/16V (-5.969mm,-8.509mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4117.5mil|Location2.X=4212.583mil|Location1.Y=2357.5mil|Location2.Y=2472.499mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4117.5mil|Location2.X=4212.583mil|Location1.Y=2357.5mil|Location2.Y=2472.499mil|Absolute=True">SMT Small Component C10-47pF/6.3V (-0.508mm,-18.034mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3682.501mil|Location2.X=3797.5mil|Location1.Y=2752.5mil|Location2.Y=2917.583mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3682.501mil|Location2.X=3797.5mil|Location1.Y=2752.5mil|Location2.Y=2917.583mil|Absolute=True">SMT Small Component C9-47pF/6.3V (-10.795mm,-8.763mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4172.5mil|Location2.X=4280.521mil|Location1.Y=3452.501mil|Location2.Y=3567.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4172.5mil|Location2.X=4280.521mil|Location1.Y=3452.501mil|Location2.Y=3567.5mil|Absolute=True">SMT Small Component C8-NC (0.889mm,9.779mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4049.417mil|Location2.X=4157.5mil|Location1.Y=3452.501mil|Location2.Y=3567.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4049.417mil|Location2.X=4157.5mil|Location1.Y=3452.501mil|Location2.Y=3567.5mil|Absolute=True">SMT Small Component C7-NC (-0.889mm,9.779mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4954.5mil|Location2.X=5055.5mil|Location1.Y=3081.479mil|Location2.Y=3335.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4954.5mil|Location2.X=5055.5mil|Location1.Y=3081.479mil|Location2.Y=3335.5mil|Absolute=True">SMT Small Component C6-10uF/50V (21.336mm,2.794mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5169.5mil|Location2.X=5270.5mil|Location1.Y=3081.479mil|Location2.Y=3335.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5169.5mil|Location2.X=5270.5mil|Location1.Y=3081.479mil|Location2.Y=3335.5mil|Absolute=True">SMT Small Component C29-10uF/50V (26.797mm,2.794mm) on Bottom Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5054.5mil|Location2.X=5155.5mil|Location1.Y=3081.479mil|Location2.Y=3335.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5054.5mil|Location2.X=5155.5mil|Location1.Y=3081.479mil|Location2.Y=3335.5mil|Absolute=True">SMT Small Component C5-10uF/50V (23.876mm,2.794mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4969.5mil|Location2.X=5070.5mil|Location1.Y=3081.445mil|Location2.Y=3335.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4969.5mil|Location2.X=5070.5mil|Location1.Y=3081.445mil|Location2.Y=3335.5mil|Absolute=True">SMT Small Component C30-10uF/50V (21.717mm,2.794mm) on Bottom Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5154.5mil|Location2.X=5255.5mil|Location1.Y=3081.479mil|Location2.Y=3335.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5154.5mil|Location2.X=5255.5mil|Location1.Y=3081.479mil|Location2.Y=3335.5mil|Absolute=True">SMT Small Component C4-10uF/50V (26.416mm,2.794mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5069.5mil|Location2.X=5170.5mil|Location1.Y=3081.479mil|Location2.Y=3335.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5069.5mil|Location2.X=5170.5mil|Location1.Y=3081.479mil|Location2.Y=3335.5mil|Absolute=True">SMT Small Component C28-10uF/50V (24.257mm,2.794mm) on Bottom Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3044.5mil|Location2.X=3145.5mil|Location1.Y=3081.445mil|Location2.Y=3335.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3044.5mil|Location2.X=3145.5mil|Location1.Y=3081.445mil|Location2.Y=3335.5mil|Absolute=True">SMT Small Component C3-10uF/50V (-27.178mm,2.794mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3259.5mil|Location2.X=3360.5mil|Location1.Y=3081.479mil|Location2.Y=3335.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3259.5mil|Location2.X=3360.5mil|Location1.Y=3081.479mil|Location2.Y=3335.5mil|Absolute=True">SMT Small Component C27-10uF/50V (-21.717mm,2.794mm) on Bottom Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3144.5mil|Location2.X=3245.5mil|Location1.Y=3081.479mil|Location2.Y=3335.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3144.5mil|Location2.X=3245.5mil|Location1.Y=3081.479mil|Location2.Y=3335.5mil|Absolute=True">SMT Small Component C2-10uF/50V (-24.638mm,2.794mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3159.5mil|Location2.X=3260.5mil|Location1.Y=3081.479mil|Location2.Y=3335.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3159.5mil|Location2.X=3260.5mil|Location1.Y=3081.479mil|Location2.Y=3335.5mil|Absolute=True">SMT Small Component C26-10uF/50V (-24.257mm,2.794mm) on Bottom Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3244.5mil|Location2.X=3345.5mil|Location1.Y=3081.479mil|Location2.Y=3335.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3244.5mil|Location2.X=3345.5mil|Location1.Y=3081.479mil|Location2.Y=3335.5mil|Absolute=True">SMT Small Component C1-10uF/50V (-22.098mm,2.794mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3059.5mil|Location2.X=3160.5mil|Location1.Y=3081.479mil|Location2.Y=3335.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3059.5mil|Location2.X=3160.5mil|Location1.Y=3081.479mil|Location2.Y=3335.5mil|Absolute=True">SMT Small Component C25-10uF/50V (-26.797mm,2.794mm) on Bottom Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4211mil|Location2.X=4519mil|Location1.Y=2021mil|Location2.Y=2182.028mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4211mil|Location2.X=4519mil|Location1.Y=2021mil|Location2.Y=2182.028mil|Absolute=True">Small Component P4-CONN_X3 (7.62mm,-26.67mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3361mil|Location2.X=3669mil|Location1.Y=2021mil|Location2.Y=2182.132mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3361mil|Location2.X=3669mil|Location1.Y=2021mil|Location2.Y=2182.132mil|Absolute=True">Small Component P3-CONN_X3 (-19.05mm,-26.67mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4711mil|Location2.X=4888.087mil|Location1.Y=2321mil|Location2.Y=2429mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4711mil|Location2.X=4888.087mil|Location1.Y=2321mil|Location2.Y=2429mil|Absolute=True">Small Component TP1-CONN_X1_DOT (15.24mm,-19.05mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5111mil|Location2.X=5292.768mil|Location1.Y=2321mil|Location2.Y=2429mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5111mil|Location2.X=5292.768mil|Location1.Y=2321mil|Location2.Y=2429mil|Absolute=True">Small Component TP2-CONN_X1_DOT (25.4mm,-19.05mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3741mil|Location2.X=3849mil|Location1.Y=3911mil|Location2.Y=4055.65mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3741mil|Location2.X=3849mil|Location1.Y=3911mil|Location2.Y=4055.65mil|Absolute=True">Small Component TP3-CONN_X1_DOT (-9.398mm,21.336mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4481mil|Location2.X=4589mil|Location1.Y=3916mil|Location2.Y=4065.567mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4481mil|Location2.X=4589mil|Location1.Y=3916mil|Location2.Y=4065.567mil|Absolute=True">Small Component TP4-CONN_X1_DOT (9.398mm,21.463mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3461mil|Location2.X=3569mil|Location1.Y=2321mil|Location2.Y=2470.567mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3461mil|Location2.X=3569mil|Location1.Y=2321mil|Location2.Y=2470.567mil|Absolute=True">Small Component TP5-CONN_X1_DOT (-16.51mm,-19.05mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3761mil|Location2.X=3969mil|Location1.Y=2021mil|Location2.Y=2172.028mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3761mil|Location2.X=3969mil|Location1.Y=2021mil|Location2.Y=2172.028mil|Absolute=True">Small Component P7-CONN_X2 (-8.89mm,-26.67mm) on Top Layer</acronym></a> - Component pads are OFF grid. No action taken.</td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>
