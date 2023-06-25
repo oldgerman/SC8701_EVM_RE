@@ -1,18 +1,18 @@
 ----------------------------------------------------------------------------------------------------------------------------------
-NCDrill File Report For: SC8701_EVM_RE1_0624.PcbDoc   2023/6/25  16:56:58
+NCDrill File Report For: SC8701_EVM_RE1_M6.PcbDoc   2023/6/25  18:44:19
 ----------------------------------------------------------------------------------------------------------------------------------
 
 Layer Pair : Top Layer to Bottom Layer
-ASCII RoundHoles File : SC8701_EVM_RE1_0624.TXT
+ASCII RoundHoles File : SC8701_EVM_RE1_M6.TXT
 
 Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel
 ----------------------------------------------------------------------------------------------------------------------------------
-T1      12mil (0.3mm)                                             Round             329       PTH        35.69inch (906.64mm)
-T2      20mil (0.5mm)                                             Round             10        PTH        2.93inch (74.33mm)
+T1      12mil (0.3mm)                                             Round             345       PTH        36.58inch (929.22mm)
+T2      20mil (0.5mm)                                             Round             42        PTH        12.96inch (329.08mm)
 T3      40mil (1.016mm)                                           Round             31        PTH        9.98inch (253.57mm)
 T4      126mil (3.2mm)                                            Round             4         PTH        9.25inch (235.00mm)
-T5      220mil (5.6mm)                                            Round             4         PTH        7.55inch (191.77mm)
+T5      240mil (6.1mm)                                            Round             4         PTH        7.35inch (186.69mm)
 ----------------------------------------------------------------------------------------------------------------------------------
-Totals                                                                              378
+Totals                                                                              426
 
 Total Processing Time (hh:mm:ss) : 00:00:00

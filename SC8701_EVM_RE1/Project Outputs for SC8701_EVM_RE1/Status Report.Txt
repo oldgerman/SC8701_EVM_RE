@@ -1,12 +1,12 @@
 Output: NC Drill Files
 Type  : NC Drill
 From  : Project [SC8701_EVM_RE1.PrjPcb]
-   Generated File[SC8701_EVM_RE1_0624.TXT]
-   Generated File[SC8701_EVM_RE1_0624.LDP]
-   Generated File[SC8701_EVM_RE1_0624.DRR]
+   Generated File[SC8701_EVM_RE1_M6.TXT]
+   Generated File[SC8701_EVM_RE1_M6.LDP]
+   Generated File[SC8701_EVM_RE1_M6.DRR]
 
 
 Files Generated   : 3
 Documents Printed : 0
 
-Finished Output Generation At 16:56:58 On 2023/6/25
+Finished Output Generation At 18:44:19 On 2023/6/25
