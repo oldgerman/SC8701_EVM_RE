@@ -7,8 +7,8 @@
 
 南芯 SC8701 评估板 的 重置版
 
-- [SC8701_EVM_RE0](https://github.com/oldgerman/SC8701_EVM_RE/SC8701_EVM_RE0) （4层板设计）
-- [SC8701_EVM_RE1](https://github.com/oldgerman/SC8701_EVM_RE/SC8701_EVM_RE1) （2层板设计）
+- [SC8701_EVM_RE0](https://github.com/oldgerman/SC8701_EVM_RE/tree/master/SC8701_EVM_RE0) （4层板）
+- [SC8701_EVM_RE1](https://github.com/oldgerman/SC8701_EVM_RE/tree/master/SC8701_EVM_RE1) （2层板）
 
 ## 感谢
 
