@@ -1,7 +1,7 @@
 Protel Design System Design Rule Check
 PCB File : D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE\SC8701_EVM_RE0\SC8701_EVM_RE0.PcbDoc
-Date     : 2023/6/17
-Time     : 17:12:27
+Date     : 2023/6/25
+Time     : 13:57:14
 
 Processing Rule : Clearance Constraint (Gap=10mil) (InPolygon),(All)
 Rule Violations :0
@@ -19,7 +19,8 @@ Processing Rule : Short-Circuit Constraint (Allowed=Yes) (InNet('AGND')),(InNet(
 Rule Violations :0
 
 Processing Rule : Un-Routed Net Constraint ( (All) )
-Rule Violations :0
+   Violation between Un-Routed Net Constraint: [No Net] Between Track (-515mil,-565mil)(-515mil,-455mil) on Top Overlay And Track (-515mil,-565mil)(-515mil,-455mil) on Top Overlay 
+Rule Violations :1
 
 Processing Rule : Width Constraint (Min=7.8mil) (Max=30mil) (Preferred=7.874mil) (All)
 Rule Violations :0
@@ -55,6 +56,6 @@ Processing Rule : Height Constraint (Min=0mil) (Max=1000mil) (Prefered=500mil) (
 Rule Violations :0
 
 
-Violations Detected : 0
+Violations Detected : 1
 Waived Violations : 0
-Time Elapsed        : 00:00:02
+Time Elapsed        : 00:00:01
