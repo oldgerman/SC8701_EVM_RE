@@ -1,7 +1,7 @@
 Protel Design System Design Rule Check
 PCB File : D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE\SC8701_EVM_RE1\SC8701_EVM_RE1_0624.PcbDoc
 Date     : 2023/6/25
-Time     : 14:27:24
+Time     : 16:55:51
 
 Processing Rule : Clearance Constraint (Gap=5mil) (IsStitchingVia and InNet('VOUT')),((IsVia and (Not IsStitchingVia)) Or IsPad)
 Rule Violations :0
