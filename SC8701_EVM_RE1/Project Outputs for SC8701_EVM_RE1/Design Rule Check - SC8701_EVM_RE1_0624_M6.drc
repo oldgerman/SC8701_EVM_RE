@@ -1,9 +1,9 @@
 Protel Design System Design Rule Check
-PCB File : D:\ODG-PROJECT\DS-PPK\AD_Project\TPS61088EVM-677\SC8701_EVM_RE1_0620.PcbDoc
-Date     : 2023/6/24
-Time     : 20:49:02
+PCB File : D:\ODG-PROJECT\DS-PPK\AD_Project\SC8701_EVM_RE\SC8701_EVM_RE1\SC8701_EVM_RE1_0624_M6.PcbDoc
+Date     : 2023/7/22
+Time     : 16:22:24
 
-Processing Rule : Clearance Constraint (Gap=0.254mm) (InPolygon),(All)
+Processing Rule : Clearance Constraint (Gap=0.127mm) (IsStitchingVia and InNet('VOUT')),((IsVia and (Not IsStitchingVia)) Or IsPad)
 Rule Violations :0
 
 Processing Rule : Clearance Constraint (Gap=0.198mm) (All),(All)
@@ -12,7 +12,7 @@ Rule Violations :0
 Processing Rule : Clearance Constraint (Gap=0.305mm) ((InNet('GND') AND InPolygon)),(IsVia)
 Rule Violations :0
 
-Processing Rule : Clearance Constraint (Gap=0.127mm) (IsStitchingVia and InNet('VOUT')),((IsVia and (Not IsStitchingVia)) Or IsPad)
+Processing Rule : Clearance Constraint (Gap=0.254mm) (InPolygon),(All)
 Rule Violations :0
 
 Processing Rule : Short-Circuit Constraint (Allowed=Yes) (InNet('AGND')),(InNet('PGND'))
@@ -24,13 +24,7 @@ Rule Violations :0
 Processing Rule : Width Constraint (Min=0.2mm) (Max=2.54mm) (Preferred=0.2mm) (All)
 Rule Violations :0
 
-Processing Rule : Power Plane Connect Rule(Direct Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) ((InComponent('J1') AND InComponent('J2') AND InComponent('J3') AND InComponent('J4')))
-Rule Violations :0
-
-Processing Rule : Power Plane Connect Rule(Direct Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)
-Rule Violations :0
-
-Processing Rule : Power Plane Connect Rule(Relief Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (InNet('AGND') and InNet('GND'))
+Processing Rule : Power Plane Connect Rule(Relief Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)
 Rule Violations :0
 
 Processing Rule : Hole Size Constraint (Min=0.279mm) (Max=6.858mm) (All)
